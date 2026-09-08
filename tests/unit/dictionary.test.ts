@@ -66,4 +66,15 @@ describe('dictionary provider', () => {
   it('reports changed markup distinctly', async () => {
     expect(await createProvider(async () => new Response('<title>Cambridge Dictionary</title>'))('lucid')).toMatchObject({ ok: false, error: 'unavailable' });
   });
+  it('rejects oversized pages', async () => {
+    expect(await createProvider(async () => new Response(article, { headers: { 'content-length': '3000000' } }))('lucid')).toMatchObject({ ok: false, error: 'unavailable' });
+  });
+  it('bounds simultaneous network requests', async () => {
+    const releases: Array<(response: Response) => void> = [];
+    const lookup = createProvider(() => new Promise(resolve => { releases.push(resolve); }));
+    const requests = ['one', 'two', 'three', 'four'].map(word => lookup(word));
+    expect(await lookup('five')).toMatchObject({ ok: false, error: 'rate-limited' });
+    releases.forEach(release => release(new Response(article)));
+    await Promise.all(requests);
+  });
 });

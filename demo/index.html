@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A little room for wonder — Margin playground</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #3c463c; background: #f9f9f4; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    header { max-width: 1120px; margin: 0 auto; padding: 30px 42px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e4e8de; }
+    .wordmark { font-size: 22px; letter-spacing: -1px; font-weight: 600; }
+    .wordmark span { display: inline-grid; place-items: center; width: 30px; height: 30px; background: #e6eddc; border-radius: 8px; margin-right: 9px; color: #63804f; font-size: 18px; }
+    .header-note { font-size: 11px; text-transform: uppercase; letter-spacing: 1.8px; color: #89927f; }
+    main { max-width: 1020px; margin: 70px auto 0; padding: 0 42px; display: grid; grid-template-columns: minmax(0, 620px) 190px; gap: 80px; }
+    .eyebrow { font-size: 10px; letter-spacing: 2px; color: #718567; font-weight: 600; }
+    h1 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 62px); line-height: 1.08; letter-spacing: -2px; margin: 22px 0; color: #344330; }
+    .deck { font-size: 16px; line-height: 1.7; color: #77806e; max-width: 470px; }
+    .byline { font-size: 10px; color: #8b9482; margin: 25px 0 36px; padding-bottom: 27px; border-bottom: 1px solid #e1e6d9; }
+    article p { font-family: Georgia, serif; font-size: 19px; line-height: 1.95; color: #59614e; margin: 0 0 22px; }
+    article p:first-child::first-letter { float: left; font-size: 63px; line-height: 1; margin: 10px 9px 0 0; color: #4f6542; }
+    article h2 { font-family: Georgia, serif; font-weight: 400; font-size: 28px; margin-top: 38px; }
+    ::selection { background: #dce9cb; color: #33482d; }
+    aside { padding-top: 10px; }
+    .aside-line { width: 26px; height: 2px; background: #a4b58d; margin: 22px 0; }
+    aside p { font-size: 12px; color: #859077; line-height: 1.9; }
+    .tag { display: inline-block; margin-top: 16px; padding: 5px 8px; border: 1px solid #d8e1ce; border-radius: 6px; font-size: 10px; color: #7e8e6b; }
+    .test-area { max-width: 936px; margin: 70px auto; border-top: 1px solid #e1e6d9; padding-top: 24px; font-size: 13px; color: #76816a; }
+    .test-area input, .test-area textarea, .test-area [contenteditable] { display: block; padding: 10px; margin: 12px 0; border: 1px solid #d8dfce; border-radius: 7px; background: #fff; color: #46513c; }
+    .edge-word { position: fixed; right: 4px; bottom: 4px; font-size: 12px; color: #89957e; }
+    @media (max-width: 800px) { main { display: block; margin-top: 40px; padding: 0 25px; } aside { display: none; } header { padding: 22px 25px; } .header-note { font-size: 8px; } .test-area { margin: 50px 25px; } }
+  </style>
+</head>
+<body>
+  <header><div class="wordmark"><span>m</span>margin</div><div class="header-note">Notes for a curious mind</div></header>
+  <main>
+    <div>
+      <div class="eyebrow">THE ART OF NOTICING &nbsp; / &nbsp; 004</div>
+      <h1>A little room<br>for wonder.</h1>
+      <div class="deck">On taking the long way home, following your curiosity, and finding meaning in the margins.</div>
+      <div class="byline">THE MARGIN JOURNAL &nbsp; · &nbsp; 4 MIN READ</div>
+      <article>
+        <p>Some of the best things arrive without an invitation. A book left on a train. A conversation that changes your afternoon. We call it <span id="target">serendipity</span>, this small talent for discovering something lovely when we were looking for something else.</p>
+        <p>Perhaps curiosity is simply a willingness to linger. To notice an unfamiliar word, a quiet garden, or a <span id="second">lucid</span> thought that makes everything feel a little clearer.</p>
+        <h2>Leave space for the unexpected.</h2>
+        <p>There is no need to understand everything at once. Sometimes one word is enough to open a door. The world is full of ordinary moments waiting for our attention.</p>
+        <p>A slow walk can become a small adventure. A familiar street can reveal a new detail. And a page can take you somewhere you never intended to go.</p>
+      </article>
+    </div>
+    <aside><div class="eyebrow">IN THE MARGINS</div><div class="aside-line"></div><p>A small companion<br>for the words<br>along the way.</p><p>Select a word.<br>Follow your curiosity.<br>Keep reading.</p><span class="tag">ENGLISH · CAMBRIDGE</span></aside>
+  </main>
+  <section class="test-area">
+    <p>Interaction playground · install the extension, then select text above.</p>
+    <p id="multiple">two words</p><p id="punctuation">“well-being,”</p>
+    <input aria-label="Editable test" value="serendipity"><textarea aria-label="Text area test">serendipity</textarea>
+    <div contenteditable="true" role="textbox" aria-label="Rich text test">serendipity</div>
+  </section>
+  <span class="edge-word" id="edge">wonder</span>
+</body>
+</html>
