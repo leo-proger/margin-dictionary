@@ -19,10 +19,10 @@ npm run package:source
 `package:source` собирает последний коммит; перед запуском закоммить изменения.
 Получатся:
 
-- `artifacts/margin-dictionary-0.2.0.xpi` — само расширение.
-- `artifacts/margin-dictionary-0.2.0-source.zip` — исходники и инструкции сборки.
+- `artifacts/margin-dictionary-1.0.0.xpi` — само расширение.
+- `artifacts/margin-dictionary-1.0.0-source.zip` — исходники и инструкции сборки.
 
-Оба файла также приложены к GitHub Release v0.2.0. XPI из GitHub не подписан
+Оба файла также приложены к GitHub Release v1.0.0. XPI из GitHub не подписан
 Mozilla: обычная постоянная установка до подписания не сработает.
 
 Идентификатор расширения: `margin-dictionary@leo-proger.github.io`.
@@ -37,8 +37,8 @@ Mozilla: обычная постоянная установка до подпи�
 2. Прочитай условия разработчика и прими их от своего имени.
 3. Выбери размещение **On this site**, чтобы расширение появилось в магазине.
    Вариант **On your own** нужен для самостоятельного распространения подписанного XPI.
-4. Загрузи `margin-dictionary-0.2.0.xpi` и дождись автоматической проверки.
-5. Предоставь `margin-dictionary-0.2.0-source.zip`: TypeScript собирается через
+4. Загрузи `margin-dictionary-1.0.0.xpi` и дождись автоматической проверки.
+5. Предоставь `margin-dictionary-1.0.0-source.zip`: TypeScript собирается через
    esbuild, поэтому ревьюеру нужны исходники. В инструкциях сборки укажи
    `npm ci` и `npm run build` с Node.js 22+. Готовые файлы находятся в `dist/`.
 

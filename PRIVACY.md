@@ -1,6 +1,6 @@
 # Privacy policy
 
-Effective date: September 8, 2026. Applies to Margin Dictionary 0.2.0.
+Effective date: September 8, 2026. Applies to Margin Dictionary 1.0.0.
 
 Margin Dictionary has no analytics, accounts, persistent query history or
 developer-operated servers. It does not sell or share data with advertisers.

@@ -1,6 +1,6 @@
 {
   "name": "margin-dictionary",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A quiet Cambridge Dictionary companion for Firefox and Zen.",
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "dev": "node scripts/dev.mjs",
     "lint:extension": "web-ext lint --source-dir dist --warnings-as-errors",
     "check": "npm run typecheck && npm test && npm run build && npm run lint:extension && npm run test:e2e",
-    "package": "npm run build && web-ext build --source-dir dist --artifacts-dir artifacts --filename margin-dictionary-0.2.0.xpi --overwrite-dest",
+    "package": "npm run build && web-ext build --source-dir dist --artifacts-dir artifacts --filename margin-dictionary-1.0.0.xpi --overwrite-dest",
     "package:source": "node scripts/package-source.mjs",
     "start:zen": "npm run build && web-ext run --source-dir dist --firefox /Applications/Zen.app/Contents/MacOS/zen"
   },

@@ -19,7 +19,7 @@ body:
     id: version
     attributes:
       label: Extension version
-      placeholder: 0.2.0
+      placeholder: 1.0.0
   - type: textarea
     id: context
     attributes:

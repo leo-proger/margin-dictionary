@@ -47,7 +47,7 @@ is not used.
 npm run package
 ```
 
-Output: `artifacts/margin-dictionary-0.2.0.xpi`.
+Output: `artifacts/margin-dictionary-1.0.0.xpi`.
 This is an **unsigned development archive**. For permanent installation in a
 standard browser, submit it to [Mozilla for signing](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/)
 (an unlisted, self-distributed add-on is an option). Merely renaming a ZIP to XPI
