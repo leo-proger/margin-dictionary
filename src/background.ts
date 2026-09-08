@@ -1,5 +1,8 @@
 import { createProvider } from './dictionary/provider';
 import { safeAudioUrl } from './dictionary/word';
+import { registerContextMenu } from './context-menu';
+
+registerContextMenu();
 
 const lookup = createProvider();
 let audio: HTMLAudioElement | undefined;

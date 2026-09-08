@@ -43,4 +43,6 @@ shortcut.append(el('kbd', '', 'Alt'), document.createTextNode(' + '), el('kbd', 
 tips.append(el('span', '', 'Or select a word on any webpage'), shortcut);
 document.body.append(card.element, tips);
 input.focus();
+const initialWord = normalizeWord(new URLSearchParams(location.search).get('word'));
+if (initialWord) { input.value = initialWord; void card.show(initialWord); }
 window.addEventListener('pagehide', () => card.cancel());

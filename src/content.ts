@@ -19,6 +19,7 @@ let isOpen = false;
 let priorFocus: HTMLElement | undefined;
 let selectionTimer: ReturnType<typeof setTimeout>;
 let frame = 0;
+let contextSelection: ReturnType<typeof readSelection>;
 
 const stop = () => { void browser.runtime.sendMessage({ type: 'stop-audio' }).catch(() => {}); };
 const card = new DictionaryCard({
@@ -128,9 +129,13 @@ function openCard() {
 
 launcher.addEventListener('pointerdown', event => event.preventDefault());
 launcher.addEventListener('click', openCard);
+document.addEventListener('contextmenu', event => {
+  contextSelection = event.composedPath().includes(host) ? undefined : readSelection();
+}, true);
 document.addEventListener('pointerup', event => { if (!event.composedPath().includes(host) && event.button === 0) scheduleSelection(); });
 document.addEventListener('selectionchange', scheduleSelection);
 document.addEventListener('pointerdown', event => {
+  contextSelection = undefined;
   if (!event.composedPath().includes(host)) dismiss();
 }, true);
 document.addEventListener('keydown', event => {
@@ -149,7 +154,18 @@ window.visualViewport?.addEventListener('scroll', schedulePosition);
 window.addEventListener('pagehide', () => dismiss());
 document.addEventListener('fullscreenchange', () => dismiss());
 browser.runtime.onMessage.addListener((message: unknown) => {
-  if (!message || typeof message !== 'object' || (message as { type?: string }).type !== 'lookup-selection') return;
+  if (!message || typeof message !== 'object') return;
+  const data = message as { type?: string; word?: unknown };
+  if (data.type === 'lookup-context') {
+    const word = normalizeWord(data.word);
+    const next = contextSelection ?? readSelection();
+    contextSelection = undefined;
+    if (!word || !next || next.word !== word || !next.range.startContainer.isConnected) return Promise.resolve({ opened: false });
+    selected = next;
+    openCard();
+    return Promise.resolve({ opened: true });
+  }
+  if (data.type !== 'lookup-selection') return;
   const next = readSelection();
   if (next) { selected = next; openCard(); }
 });
