@@ -1,0 +1,28 @@
+{
+  "name": "english-dictionary-popup",
+  "version": "0.1.0",
+  "description": "A quiet Cambridge Dictionary companion for Firefox and Zen.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "dev": "node scripts/dev.mjs",
+    "lint:extension": "web-ext lint --source-dir dist --warnings-as-errors",
+    "check": "npm run typecheck && npm test && npm run build && npm run lint:extension && npm run test:e2e",
+    "package": "npm run build && web-ext build --source-dir dist --artifacts-dir artifacts --filename margin-dictionary-0.1.0.xpi --overwrite-dest",
+    "start:zen": "npm run build && web-ext run --source-dir dist --firefox /Applications/Zen.app/Contents/MacOS/zen"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/firefox-webext-browser": "^143.0.0",
+    "@types/node": "^26.5.0",
+    "esbuild": "^0.28.2",
+    "jsdom": "^29.1.1",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0",
+    "web-ext": "^10.6.0"
+  },
+  "private": true
+}
