@@ -75,6 +75,12 @@ h1, h2, p, blockquote { margin: 0; }
   .card { background: linear-gradient(135deg, rgba(252,253,249,.91), rgba(242,248,239,.90)); backdrop-filter: blur(24px) saturate(1.25); }
   .launcher { background: rgba(249,252,246,.93); backdrop-filter: blur(16px); }
 }
+/* Zen's compositor may expose backdrop-filter while leaving the backdrop sharp.
+   Keep Firefox's surface opaque so page text cannot bleed into definitions. */
+@supports (-moz-appearance: none) {
+  .card { background: linear-gradient(135deg, #fafcf7, #f0f5ec); }
+  .launcher { background: #f8faf5; }
+}
 .card-top { display: flex; align-items: center; gap: 12px; padding: 17px 19px 15px; border-bottom: 1px solid var(--line); flex: 0 0 auto; }
 .brand { display: flex; align-items: center; gap: 7px; font-size: 16px; font-weight: 650; letter-spacing: -.65px; color: #345b47; }
 .brand svg { width: 19px; height: 19px; }
