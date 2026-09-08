@@ -10,6 +10,8 @@ Warm white frosted glass, forest green accents, system sans-serif typography
 (SF Pro on macOS, Segoe UI on Windows), generous spacing, 400px maximum card width.
 Use CSS backdrop-filter with an opaque warm white fallback. The card lives in a
 Shadow DOM and the browser's popover top layer to isolate website styles and stacking.
+Visual verification in Zen 1.22b showed no effective backdrop blur despite CSS
+support; Firefox uses the opaque ivory/sage fallback to prevent background text bleed.
 Display the headword, part of speech, UK/US IPA and pronunciation, CEFR levels,
 definitions and up to two examples per meaning. Preserve separate parts of speech.
 Always link to Cambridge. Include loading, missing word, network, blocked and
