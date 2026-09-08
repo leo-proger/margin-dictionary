@@ -29,6 +29,8 @@ changed-markup states; do not replace dictionary content with invented definitio
   cache, limited concurrency. Error results are never cached.
 - UI uses DOM construction and textContent; never inject remote HTML or execute it.
 - Toolbar provides manual lookup on browser pages where content scripts cannot run.
+- A page context-menu action opens manual search; on an English-word selection it
+  opens the anchored card in the selected frame, with a toolbar fallback on protected pages.
 - Selected/search words go to Cambridge only on request; no page URL, context,
   cookies, browsing history or durable query history is sent/stored by the extension.
 

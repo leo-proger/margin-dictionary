@@ -1,5 +1,9 @@
 # Margin Dictionary
 
+[![CI](https://github.com/leo-proger/margin-dictionary/actions/workflows/ci.yml/badge.svg)](https://github.com/leo-proger/margin-dictionary/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/leo-proger/margin-dictionary)](https://github.com/leo-proger/margin-dictionary/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-587651.svg)](LICENSE)
+
 A quiet Cambridge Dictionary companion for **Firefox and Zen Browser**.
 Select an English word, click **Define**, and keep reading.
 
@@ -11,6 +15,7 @@ Select an English word, click **Define**, and keep reading.
   Firefox / Zen use an opaque light surface for reliable readability.
 - Keyboard shortcut: **Alt + Shift + D**. Close with **Escape** or an outside click.
 - Manual search from the extension's toolbar button.
+- Right-click a selected word to define it, or open search from the page menu.
 - No account, backend, production dependencies or API key.
 
 ## Install in Zen / Firefox
@@ -42,12 +47,15 @@ is not used.
 npm run package
 ```
 
-Output: `artifacts/margin-dictionary-0.1.0.xpi`.
+Output: `artifacts/margin-dictionary-0.2.0.xpi`.
 This is an **unsigned development archive**. For permanent installation in a
 standard browser, submit it to [Mozilla for signing](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/)
 (an unlisted, self-distributed add-on is an option). Merely renaming a ZIP to XPI
-does not bypass the signing requirement. No publishing or signing is performed by
-this project.
+does not bypass the signing requirement. Download builds from
+[GitHub Releases](https://github.com/leo-proger/margin-dictionary/releases).
+For store publication, follow the [Firefox Add-ons publishing guide](docs/publishing-firefox.md).
+Run `npm run package:source` after committing changes to prepare the source ZIP
+for Mozilla review.
 
 ## Cambridge integration
 
@@ -87,7 +95,7 @@ distribution of the extension does not grant a dictionary-content license.
 ## Privacy
 
 Selecting a word does **not** make a dictionary request. Only clicking **Define**,
-using the lookup shortcut, submitting toolbar search, or retrying sends that word
+choosing a context-menu lookup, using the shortcut, submitting toolbar search, or retrying sends that word
 to `dictionary.cambridge.org`. Audio is requested only when you press its button.
 
 The extension sends no surrounding text, page URL or page title. Dictionary and
@@ -99,6 +107,8 @@ There is no analytics, query history, persistent storage or third-party proxy.
 The Firefox manifest declares `searchTerms` transmission. Access to ordinary
 webpages is needed to detect the selection and display the card. Editable fields,
 password fields and non-word selections are ignored.
+
+See the complete [privacy policy](PRIVACY.md).
 
 ## Development and verification
 
@@ -139,8 +149,18 @@ src/dictionary/   Word validation, Cambridge parser and request provider
 src/ui/           Shared, isolated dictionary card and styles
 src/content.ts    Selection button, positioning and dismissal
 src/background.ts Firefox messaging and Cambridge requests
+src/context-menu.ts Right-click actions and protected-page fallback
 src/popup.ts      Toolbar search
 public/          Manifest, popup document and icon
 tests/           Unit and browser tests
 scripts/         Build, playground server and real Zen smoke test
 ```
+
+## Contributing and license
+
+Bug reports and focused pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md)
+and the [changelog](CHANGELOG.md).
+
+Code is licensed under [MIT](LICENSE). Cambridge definitions, examples and trademarks
+belong to their respective owners. Margin Dictionary is an independent project,
+not affiliated with or endorsed by Cambridge University Press & Assessment.

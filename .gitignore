@@ -14,3 +14,6 @@ yarn-error.log*
 /artifacts
 /test-results
 /playwright-report
+/docs/superpowers/
+/.idea/
+.DS_Store
