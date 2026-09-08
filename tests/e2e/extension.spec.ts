@@ -106,25 +106,6 @@ test('keyboard command opens and outside click dismisses', async ({ page }) => {
   await expect(page.getByRole('dialog')).toBeHidden();
 });
 
-test('context menu preserves its selection even when the native menu clears it', async ({ page }) => {
-  await setup(page);
-  await select(page);
-  await page.locator('#target').click({ button: 'right' });
-  await page.evaluate(() => window.getSelection()?.removeAllRanges());
-  const result = await page.evaluate(() => (window as any).listener({ type: 'lookup-context', word: 'serendipity' }));
-  expect(result).toEqual({ opened: true });
-  await expect(page.getByText('the fact of finding interesting or valuable things by chance', { exact: true })).toBeVisible();
-});
-
-test('context menu refuses a word that does not match its captured selection', async ({ page }) => {
-  await setup(page);
-  await select(page);
-  await page.locator('#target').click({ button: 'right' });
-  const result = await page.evaluate(() => (window as any).listener({ type: 'lookup-context', word: 'different' }));
-  expect(result).toEqual({ opened: false });
-  expect(await page.evaluate(() => (window as any).lookupCalls)).toEqual([]);
-});
-
 test('late responses cannot reopen a dismissed card', async ({ page }) => {
   await setup(page, { delay: 450, fail: false });
   await select(page);
@@ -155,7 +136,7 @@ test('site styles cannot alter the card typography', async ({ page }) => {
 
 test('toolbar supports manual lookup and rejects multiword queries', async ({ page }) => {
   await page.addInitScript(entry => {
-    (window as any).browser = { runtime: { sendMessage: async (message: any) => message.type === 'lookup' ? { ok: true, entry } : { ok: true } } };
+    (window as any).browser = { runtime: { sendMessage: async (message: any) => message.type === 'lookup' ? { ok: true, entry } : { word: null } } };
   }, entry);
   await page.setViewportSize({ width: 400, height: 650 });
   await page.goto('/dist/popup.html');

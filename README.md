@@ -132,8 +132,8 @@ Firefox/Zen executable. Set `ZEN_HEADED=1` to show its test window. This test ch
 real definitions, examples, a long scrollable entry and a missing word. A blocked
 Cambridge response fails the live check rather than silently using fixtures.
 
-Context-menu handlers and selection preservation are covered by unit and browser
-tests. Native OS-menu automation in the isolated Zen profile is not reliable
+Context-menu registration, synchronous popup opening and one-time word handoff
+are covered by unit tests. Native OS-menu automation in the isolated Zen profile is not reliable
 (tab/focus data and pointer targeting differ from a normal session), so it is
 not part of the smoke-test pass condition. For manual verification, right-click
 a selected English word and choose **Define … with Margin Dictionary**; right-click
@@ -156,7 +156,7 @@ src/dictionary/   Word validation, Cambridge parser and request provider
 src/ui/           Shared, isolated dictionary card and styles
 src/content.ts    Selection button, positioning and dismissal
 src/background.ts Firefox messaging and Cambridge requests
-src/context-menu.ts Right-click actions and protected-page fallback
+src/context-menu.ts Right-click action and selected-word handoff
 src/popup.ts      Toolbar search
 public/          Manifest, popup document and icon
 tests/           Unit and browser tests

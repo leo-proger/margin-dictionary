@@ -44,5 +44,12 @@ tips.append(el('span', '', 'Or select a word on any webpage'), shortcut);
 document.body.append(card.element, tips);
 input.focus();
 const initialWord = normalizeWord(new URLSearchParams(location.search).get('word'));
-if (initialWord) { input.value = initialWord; void card.show(initialWord); }
+void browser.runtime.sendMessage({ type: 'consume-context-word' })
+  .then(response => {
+    const word = normalizeWord(response?.word) ?? initialWord;
+    if (word) { input.value = word; void card.show(word); }
+  })
+  .catch(() => {
+    if (initialWord) { input.value = initialWord; void card.show(initialWord); }
+  });
 window.addEventListener('pagehide', () => card.cancel());

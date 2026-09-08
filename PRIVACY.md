@@ -10,8 +10,8 @@ developer-operated servers. It does not sell or share data with advertisers.
 When you click Define, choose a lookup from the right-click menu, use the lookup
 shortcut, submit a toolbar search or retry a request, the requested word is sent
 directly to `https://dictionary.cambridge.org`. Selecting text or opening the
-context menu alone makes no dictionary request. If a page does not allow the
-inline card, an explicit context-menu lookup opens and searches the toolbar popup.
+context menu alone makes no dictionary request. Choosing its command opens the
+toolbar popup and immediately searches a valid, non-editable selected word.
 
 Only the English word is sent, never the surrounding text, current page URL,
 title or browsing history. Requests omit cookies and the referrer. Cambridge
