@@ -1,6 +1,6 @@
 {
-  "name": "english-dictionary-popup",
-  "version": "0.1.0",
+  "name": "margin-dictionary",
+  "version": "0.2.0",
   "description": "A quiet Cambridge Dictionary companion for Firefox and Zen.",
   "type": "module",
   "scripts": {
@@ -12,7 +12,8 @@
     "dev": "node scripts/dev.mjs",
     "lint:extension": "web-ext lint --source-dir dist --warnings-as-errors",
     "check": "npm run typecheck && npm test && npm run build && npm run lint:extension && npm run test:e2e",
-    "package": "npm run build && web-ext build --source-dir dist --artifacts-dir artifacts --filename margin-dictionary-0.1.0.xpi --overwrite-dest",
+    "package": "npm run build && web-ext build --source-dir dist --artifacts-dir artifacts --filename margin-dictionary-0.2.0.xpi --overwrite-dest",
+    "package:source": "node scripts/package-source.mjs",
     "start:zen": "npm run build && web-ext run --source-dir dist --firefox /Applications/Zen.app/Contents/MacOS/zen"
   },
   "devDependencies": {
@@ -26,5 +27,11 @@
     "vitest": "^5.0.0",
     "web-ext": "^10.6.0"
   },
+  "repository": { "type": "git", "url": "git+https://github.com/leo-proger/margin-dictionary.git" },
+  "homepage": "https://github.com/leo-proger/margin-dictionary#readme",
+  "bugs": { "url": "https://github.com/leo-proger/margin-dictionary/issues" },
+  "author": "Leo Proger",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
   "private": true
 }

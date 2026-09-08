@@ -1,15 +1,16 @@
 {
   "manifest_version": 3,
   "name": "Margin Dictionary",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A little more clarity. Select an English word and discover its Cambridge Dictionary definition.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "margin-dictionary@english-dictionary-popup.local",
+      "id": "margin-dictionary@leo-proger.github.io",
       "strict_min_version": "142.0",
       "data_collection_permissions": { "required": ["searchTerms"] }
     }
   },
+  "permissions": ["menus"],
   "host_permissions": ["https://dictionary.cambridge.org/*"],
   "background": { "scripts": ["background.js"] },
   "content_scripts": [{

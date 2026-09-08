@@ -38,11 +38,11 @@ try {
   session = created.sessionId;
   console.log(`Browser: ${created.capabilities.browserName} ${created.capabilities.browserVersion}`);
   const addon = await request(`/session/${session}/moz/addon/install`, { path: resolve('dist'), temporary: true });
-  assert.equal(addon, 'margin-dictionary@english-dictionary-popup.local');
+  assert.equal(addon, 'margin-dictionary@leo-proger.github.io');
   await request(`/session/${session}/window/rect`, { width: 1280, height: 960 });
   await request(`/session/${session}/url`, { url: 'http://127.0.0.1:4173/' });
   await execute('const range = document.createRange(); range.selectNodeContents(document.querySelector("#target")); window.getSelection().removeAllRanges(); window.getSelection().addRange(range);');
-  await until(() => execute(`return ${shadow}?.querySelector('.launcher')?.hidden === false`));
+  await until(() => execute(`document.dispatchEvent(new Event('selectionchange')); return ${shadow}?.querySelector('.launcher')?.hidden === false`));
   const button = await execute(`return ${shadow}.querySelector('.launcher')`);
   await request(`/session/${session}/element/${button['element-6066-11e4-a52e-4f735466cecf']}/click`, {});
   await until(() => execute(`return ${shadow}?.querySelector('.definition, .error-state') !== null && !${shadow}?.querySelector('[aria-busy]')`), 20_000);
